@@ -1,0 +1,85 @@
+try:
+
+    trabajadores=['Juan Pérez','María García','Carlos López','Ana Martínez','Pedro Rodríguez','Laura Hernández','Miguel Sánchez','Isabel Gómez','Francisco Díaz','Elena Fernández']
+    info_trabajador=[]
+
+    from datetime import datetime
+    import random
+    # funcion salida incluye nombre alumno fecha y hora
+    def salir():
+        print(f"Ud ha salido el {datetime.now().strftime('%d-%m-%Y a las %H:%d:%m')}")
+        print("Cristian Monsalve Budrovich, rut 12622852-k")
+
+    # funcion para asignar sueldos aleatoriamente, no muestra los sueldos
+    def asignar_sueldo_aleatoreo():
+        for trabajador in trabajadores:
+            num_aleatoreo = random.randint(300000,2500000) 
+            sueldo={
+                'nombre':trabajador,
+                'sueldo':num_aleatoreo,
+            }
+            info_trabajador.append(sueldo)
+            print("sueldos asignados aleatoriamente")
+    
+    # funcion para clasificar los sueldos dentro de los paramentros indicados, esta funcion si muestra los sueldos asignados
+    def clasificar_sueldos():
+        lista1=[]
+        lista2=[]
+        lista3=[]
+
+        for valor in info_trabajador:
+            if valor ['sueldo'] < 800000:
+                lista1.append(valor)
+            elif valor ['sueldo'] >= 800000 and valor['sueldo']<= 2000000:
+                lista2.append(valor)
+            else:
+                lista3.append(valor)
+    
+        print("sueldos menores a 800.000 --> "+str(len(lista1)))
+        print("nombre \t\ \t\ sueldo")
+        for valor in lista1:
+            print(f"{valor['nombre']} : {valor['sueldo']}")
+
+        print("sueldos entre 800.000 y 2.000.000 --> "+str(len(lista2)))
+        print("nombre \t\ \t\ sueldo")
+        for valor in lista2:
+            print(f"{valor['nombre']} : {valor['sueldo']}")
+
+        print("sueldos mayores a 2.000.000 --> "+str(len(lista3)))
+        print("nombre \t\ \t\ sueldo")
+        for valor in lista3:
+            print(f"{valor['nombre']} : {valor['sueldo']}")
+
+
+    while True:
+        print("\n******************************************")
+        print("*    Bienvenido al sistema de Analisis de sueldos   *")
+        print("******************************************")
+        print("\n--------   Menu    --------\n")
+        print(" 1) Asignar sueldos aleatorios")
+        print(" 2) Clasificar sueldos")
+        print(" 3) Ver estadisticas")
+        print(" 4) Reporte de sueldos")
+        print(" 5) Salir del programa\n")
+
+        
+        opcion = int(input("Ingrese una opción válida:--> "))
+        match opcion:
+            case 1:
+               asignar_sueldo_aleatoreo()
+   
+            case 2:
+                clasificar_sueldos()
+                
+            case 3:
+                print("codigo ver estadisticas")
+            case 4:
+                print("codigo reporte sueldos")
+            case 5:
+                salir()
+                break
+            case _:
+                print("Opcion invalida, Por favor ingrese opcion valida")
+
+except:
+    print("Error", ValueError)
